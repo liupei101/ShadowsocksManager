@@ -1,0 +1,16 @@
+{
+   "fast-open" : false,
+   "local_port" : 1080,
+   "method" : "aes-256-cfb",
+   "port_password" : {
+      "10212" : "guofunanqiang",
+      "12568" : "nanshenyin",
+      "14074" : "haonai",
+      "15716" : "bobodaren",
+      "4374" : "lpdaren",
+      "7891" : "lpdada"
+   },
+   "server" : "0.0.0.0",
+   "timeout" : 300,
+   "workers" : 1
+}
