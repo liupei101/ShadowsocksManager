@@ -28,9 +28,9 @@ void printInvalidBanner()
 
 void dispatchCmd(string cmd, vector<string>& arg)
 {
-    int sz = cmd.size();
     arg.clear();
     cmd += PATTERN;
+    int sz = (int)cmd.size();
     for(int i = 0;i < sz;i ++)
     {
         int pos = cmd.find(PATTERN, i);
@@ -42,7 +42,6 @@ void dispatchCmd(string cmd, vector<string>& arg)
     }
 
     arg.resize(ARG_NUM);
-
     /*
     for(int i = 0;i < arg.size();i ++)
     {
