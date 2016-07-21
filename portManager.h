@@ -29,3 +29,4 @@ private:
 };
 
 #endif // USERMANAGER_H_INCLUDED
+

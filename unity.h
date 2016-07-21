@@ -28,12 +28,13 @@ void printInvalidBanner()
 
 void dispatchCmd(string cmd, vector<string>& arg)
 {
+    int sz = cmd.size();
     arg.clear();
     cmd += PATTERN;
-    for(int i = 0;i < (int)(cmd.size());i ++)
+    for(int i = 0;i < sz;i ++)
     {
         int pos = cmd.find(PATTERN, i);
-        if(pos < cmd.size())
+        if(pos < sz)
         {
             arg.push_back(cmd.substr(i, pos - i));
             i = pos + PATTERN.size() - 1;
@@ -59,3 +60,4 @@ void restartSSServer(const string& filename)
 }
 
 #endif // UNITY_H_INCLUDED
+

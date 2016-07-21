@@ -11,13 +11,31 @@ typedef Json::Value::Members JsonValMem;
 typedef Json::Value::Members::iterator JsonValMemIt;
 typedef Json::Value JsonVal;
 
+int getIntByStr(const string& str)
+{
+    int num = 0;
+    bool flag = true;
+    for(int i = 0;i < (int)str.length();i ++)
+    {
+        if(str[i] <= '9' && str[i] >= '0') num = num * 10 + str[i] - '0';
+        else 
+        {
+            flag = false;
+            break;
+        }
+    }
+    if(!flag) return -1;
+    else if(num > 65535 || num < 1024) return -1; 
+    return num;
+}
+
 portManager::portManager(const char* filename)
 {
     memset(filePath, 0, LEN);
     memcpy(filePath, filename, LEN);
     if(strlen(filePath) == 0)
     {
-        memcpy(filePath, FILE_PATH, sizeof(FILE_PATH));
+        memcpy(filePath, FILE_PATH, LEN);
     }
 
     string buff, line;
@@ -79,6 +97,12 @@ void portManager::catPortDetail(const string& arg)
 
 void portManager::addPortDetail(const string& portNum, const string& password)
 {
+    int number = getIntByStr(portNum);
+    if(number == -1)
+    {
+        cout << "Invalid port number!\n";
+        return ;
+    }
     if(root["port_password"][portNum].empty())
     {
         root["port_password"][portNum] = password;
@@ -112,4 +136,3 @@ void portManager::delPort(const string& portNum)
         cout << "Delete port error, The port " << portNum << " does not exist!\n";
     }
 }
-

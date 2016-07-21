@@ -1,6 +1,6 @@
 #makefile for "c/s Server"
 CC = g++
-CFLAGS = -c -Wall
+CFLAGS = -c -Wall -std=c++11
 
 ALL: bin/ssmanager
 	
