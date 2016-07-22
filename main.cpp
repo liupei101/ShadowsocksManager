@@ -20,7 +20,7 @@ int main()
     cin >> filename;
     getchar();
 
-    portManager pm(filename);
+    portManager *pm = new portManager(filename);
 
     while(cin.getline(cmd, BUFFER_SIZE))
     {
@@ -31,25 +31,27 @@ int main()
         }
         else if(arg[0] == CMD_CAT)
         {
-            pm.catPortDetail(arg[1]);
+            pm->catPortDetail(arg[1]);
         }
         else if(arg[0] == CMD_ADD)
         {
-            pm.addPortDetail(arg[1], arg[2]);
+            pm->addPortDetail(arg[1], arg[2]);
         }
         else if(arg[0] == CMD_PWD)
         {
-            pm.pwdPort(arg[1], arg[2]);
+            pm->pwdPort(arg[1], arg[2]);
         }
         else if(arg[0] == CMD_DEL)
         {
-            pm.delPort(arg[1]);
+            pm->delPort(arg[1]);
         }
         else
         {
             printInvalidBanner();
         }
     }
+
+    delete pm;
 
     restartSSServer(filename);
 
