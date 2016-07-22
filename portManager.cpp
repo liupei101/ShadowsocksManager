@@ -103,7 +103,7 @@ void portManager::addPortDetail(const string& portNum, const string& password)
         cout << "Invalid port number!\n";
         return ;
     }
-    if(root["port_password"][portNum].empty())
+    if(root["port_password"].isMember(portNum) == false)
     {
         root["port_password"][portNum] = password;
     }
@@ -115,7 +115,7 @@ void portManager::addPortDetail(const string& portNum, const string& password)
 
 void portManager::pwdPort(const string& portNum, const string& newPassword)
 {
-    if(!root["port_password"][portNum].empty())
+    if(root["port_password"].isMember(portNum) == true)
     {
         root["port_password"][portNum] = newPassword;
     }
@@ -127,7 +127,7 @@ void portManager::pwdPort(const string& portNum, const string& newPassword)
 
 void portManager::delPort(const string& portNum)
 {
-    if(!root["port_password"][portNum].empty())
+    if(root["port_password"].isMember(portNum) == true)
     {
         root["port_password"].removeMember(portNum);
     }
