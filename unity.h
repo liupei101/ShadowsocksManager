@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <cstdlib>
+#include <unistd.h>
 #define BUFFER_SIZE 1024
 #define STR_SIZE 100
 #define ARG_NUM 3
@@ -55,6 +56,7 @@ void restartSSServer(const string& filename)
     string stopCmd  = "ssserver -c " + filename + " -d stop";
     string startCmd = "ssserver -c " + filename + " -d start";
     system(stopCmd.c_str());
+    sleep(5);
     system(startCmd.c_str());
 }
 
